@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito Sans", sans-serif;
+  --color-*: initial;
+  --color-white: oklch(100.00% 0.0000 0.00);
+  --color-black: oklch(0.000% 0.0000 0.00);
+  --color-grey-950: oklch(19.23% 0.0074 229.32);
+  --color-grey-400: oklch(59.99% 0.0000 0.00);
+  --color-grey-350: oklch(67.64% 0.0000 0.00);
+  --color-grey-300: oklch(76.36% 0.0000 0.00);
+  --color-grey-250: oklch(82.03% 0.0000 0.00);
+  --color-grey-50: oklch(99.11% 0.0000 0.00);
+  --color-blue-950: oklch(28.66% 0.0247 243.93);
+  --color-blue-900: oklch(33.42% 0.0274 246.57);
+}
+
+@layer components {}
