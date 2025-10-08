@@ -1,30 +1,27 @@
 import { render, screen } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { useThemeStore } from '../hooks/useThemeStore';
 import { ThemeToggleButton } from './ThemeToggleButton';
 
-
-describe('ThemeToggleButton Component', () => {
-  it('should render with initial dark state of false', () => {
-    render(<ThemeToggleButton />);
-    const toggleDarkThemeButton = screen.getByRole('button', { name: /Dark Mode/i });
-
-    expect(useThemeStore.getInitialState().theme).toBe('light');
-    expect(toggleDarkThemeButton).toBeInTheDocument();
-  });
-
-  it('should update dark state on button click', async () => {
+describe('ThemeToggleButton', () => {
+  it('should cycle through themes when clicked', async () => {
     const user = userEvent.setup();
     render(<ThemeToggleButton />);
-    const toggleThemeButton = screen.getByRole('button');
 
-    await user.click(toggleThemeButton);
-    expect(useThemeStore.getState().theme).toBe('dark');
-    expect(toggleThemeButton).toHaveAccessibleName(/Light Mode/i);
+    const themeToggleButton = screen.getByRole('button');
 
-    await user.click(toggleThemeButton);
-    expect(useThemeStore.getState().theme).toBe('light');
-    expect(toggleThemeButton).toHaveAccessibleName(/Dark Mode/i);
+    // The button should initially display "Dark Mode", reflecting the next cycle
+    // after default theme (system).
+    expect(themeToggleButton).toHaveAccessibleName(/Dark Mode/i);
+
+    // Simulate a user clicking the button to cycle to the next theme.
+    // The button text should update to "Light Mode" once clicked.
+    await user.click(themeToggleButton);
+    expect(themeToggleButton).toHaveAccessibleName(/Light Mode/i);
+
+    // Simulate a second click to cycle the theme again.
+    // The button text should update to "Match System".
+    await user.click(themeToggleButton);
+    expect(themeToggleButton).toHaveAccessibleName(/Match System/i);
   });
 });
