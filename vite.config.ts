@@ -9,9 +9,10 @@ export default defineConfig({
   plugins: [
     tanstackRouter({
       target: 'react',
+      enableRouteGeneration: false, // Disable it because this app using code-based routing
     }),
-    react(),
     tailwindcss(),
+    react(),
   ],
   resolve: {
     alias: {

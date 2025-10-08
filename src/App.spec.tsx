@@ -1,12 +1,32 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import App from './App';
+import { RouterProvider } from '@tanstack/react-router';
+import { act, render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { router } from './router';
 
 describe('App', () => {
-  it('renders the menu bar', () => {
-    render(<App />);
-    const headerComponent = screen.getByTestId('header');
+  beforeEach(() => {
+    render(<RouterProvider router={router} />);
+  });
 
+  it('should contain topbar header', async () => {
+    await act(() =>
+      router.navigate({
+        to: '/',
+      }),
+    );
+
+    const headerComponent = screen.getByTestId('header');
     expect(headerComponent).toBeInTheDocument();
+  });
+
+  it('renders the index page', async () => {
+    await act(() =>
+      router.navigate({
+        to: '/',
+      }),
+    );
+
+    const indexPageContent = screen.getByTestId('country-list-content');
+    expect(indexPageContent).toBeTruthy();
   });
 });

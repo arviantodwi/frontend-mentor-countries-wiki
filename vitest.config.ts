@@ -11,7 +11,12 @@ export default mergeConfig(
       coverage: {
         provider: 'v8',
         reporter: ['text'],
-        exclude: [...coverageConfigDefaults.exclude, '**/__mocks__/**', './src/main.tsx'],
+        exclude: [
+          ...coverageConfigDefaults.exclude,
+          '**/__mocks__/**',
+          './src/types/**',
+          './src/main.tsx',
+        ],
       },
     },
   }),

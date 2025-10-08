@@ -1,3 +1,3 @@
 export function CountryListPage() {
-  return null;
+  return <div data-testid="country-list-content"></div>;
 }
