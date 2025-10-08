@@ -1,11 +1,7 @@
-import MenuBar from './components/MenuBar';
+import { Layout } from './shared/components/Layout';
 
 function App() {
-  return (
-    <main>
-      <MenuBar />
-    </main>
-  );
+  return <Layout>{/* Content per route */}</Layout>;
 }
 
 export default App;

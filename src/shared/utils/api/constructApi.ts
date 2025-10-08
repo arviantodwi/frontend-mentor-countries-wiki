@@ -1,4 +1,4 @@
-import type { ApiOptions, ApiRoute, ApiRouteOption } from '../../types/api';
+import type { ApiOptions, ApiRoute, ApiRouteOption } from "@/types/api";
 
 const BASE_API_URL = new URL('https://restcountries.com/v3.1');
 

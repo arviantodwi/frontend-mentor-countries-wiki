@@ -1,15 +1,15 @@
-import { useThemeStore } from '../stores/theme';
+import { useThemeStore } from '../hooks/useThemeStore';
 
-export default function ThemeButton() {
-  const { dark, toggleTheme } = useThemeStore();
+export function ThemeToggleButton() {
+  const { theme, toggleTheme } = useThemeStore();
 
   return (
     <button
       className="text-grey-950 inline-flex h-8 cursor-pointer flex-row items-center gap-2 font-semibold"
       onClick={toggleTheme}
     >
-      {dark ? <SunIcon /> : <MoonIcon />}
-      {dark ? 'Light Mode' : 'Dark Mode'}
+      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
     </button>
   );
 }

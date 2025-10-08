@@ -1,6 +1,6 @@
-import type { ApiOptions } from '../../types/api';
-import type { Country } from '../../types/country';
-import { constructApi } from './helper';
+import { constructApi } from "@/shared/utils/api/constructApi";
+import type { ApiOptions } from "@/types/api";
+import type { Country } from "@/types/country";
 
 type CompactCountry = Pick<Country, 'name' | 'population' | 'region' | 'capital' | 'flags'>;
 

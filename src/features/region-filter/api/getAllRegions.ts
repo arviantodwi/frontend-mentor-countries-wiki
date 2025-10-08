@@ -1,5 +1,5 @@
-import type { Country } from '../../types/country';
-import { constructApi } from './helper';
+import { constructApi } from '@/shared/utils/api/constructApi';
+import type { Country } from '@/types/country';
 
 /**
  * Fetches all countries and returns a list of unique region names or `null` if the request fails.
