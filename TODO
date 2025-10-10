@@ -1,0 +1,24 @@
+Backlog:
+  Appearance:
+    □ Change app style based on theme state value.
+    □ Implement layout spacing based on Figma design.
+  Country List:
+    □ Show list of countries in grid layout (4 columns in desktop, 2 columns in tablet, 1 column in mobile).
+    □ Clicking on country card should navigate user to the corresponding country details page.
+    □ List of countries must be filterable by the value of `?region=` query string.
+    □ List of countries must be filterable by the value of search input.
+  Country Details:
+    □ Clicking on Back button should navigate user back country list page.
+    □ Clicking on country name within the Border Countries section should navigate user to the corresponding country details page
+  General:
+    □ Population number must be localized into US-format number (_e.g_ 1,234,567).
+
+Severity:
+  @critical:
+    □ Each API should handle errors gracefully.
+  @high:
+  @low:
+    □ Implement pagination / load more mechanism to the list of countries.
+    □ Implement end-to-end tests using Cypress.
+
+Archive:
