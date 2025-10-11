@@ -1,6 +1,6 @@
 Backlog:
   Appearance:
-    □ Change app style based on theme state value.
+    ✔ Change app style based on theme state value. @done(25-10-12 15:38)
     □ Implement layout spacing based on Figma design.
   Country List:
     □ Show list of countries in grid layout (4 columns in desktop, 2 columns in tablet, 1 column in mobile).

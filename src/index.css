@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @import "tailwindcss";
 
+/* Default theme custom properties used by the light theme */
 @theme {
   --font-sans: "Nunito Sans", sans-serif;
   --color-*: initial;
@@ -14,6 +15,35 @@
   --color-grey-50: oklch(99.11% 0.0000 0.00);
   --color-blue-950: oklch(28.66% 0.0247 243.93);
   --color-blue-900: oklch(33.42% 0.0274 246.57);
+
+  --color-body: var(--color-grey-50);
+  --color-accent: var(--color-white);
+  --color-primary-text: var(--color-grey-950);
 }
 
-@layer components {}
+/* Override the custom properties when the theme is set to system or dark */
+@layer theme {
+  :root {
+    color-scheme: light dark;
+
+    &:is(html.system) {
+      --color-body: light-dark(var(--color-grey-50), var(--color-blue-950));
+      --color-accent: light-dark(var(--color-white), var(--color-blue-900));
+      --color-primary-text: light-dark(var(--color-grey-950), var(--color-white));
+    }
+
+    &:is(html.dark) {
+      --color-body: var(--color-blue-950);
+      --color-accent: var(--color-blue-900);
+      --color-primary-text: var(--color-white);
+    }
+  }
+}
+
+@layer base {
+
+  html,
+  body {
+    min-height: 100dvh;
+  }
+}

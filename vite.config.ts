@@ -6,6 +6,15 @@ import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          themeSetup: ['./src/features/theme/utils/theme-setup.ts'],
+        },
+      },
+    },
+  },
   plugins: [
     tanstackRouter({
       target: 'react',

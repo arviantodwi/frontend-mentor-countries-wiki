@@ -10,7 +10,7 @@ export default mergeConfig(
       setupFiles: './src/vitest-setup.ts',
       coverage: {
         provider: 'v8',
-        reporter: ['text', 'html'],
+        reporter: ['text', 'lcov', 'json-summary'],
         exclude: [
           ...coverageConfigDefaults.exclude,
           '**/__mocks__/**',

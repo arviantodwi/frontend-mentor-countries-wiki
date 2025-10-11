@@ -1,42 +1,37 @@
 import { useThemeStore } from '../hooks/useThemeStore';
-import { getNextTheme } from '../utils/helper';
+import { getNextTheme, type Theme } from '../utils/helper';
+
+const iconClassName = 'aspect-square w-5';
 
 export function ThemeToggleButton() {
   const { theme, toggleTheme } = useThemeStore();
 
   const nextTheme = getNextTheme(theme);
 
-  const matchSystemLabel = (
-    <>
-      <SystemIcon /> Match System
-    </>
-  );
-  const darkModeLabel = (
-    <>
-      <MoonIcon /> Dark Mode
-    </>
-  );
-  const lightModeLabel = (
-    <>
-      <SunIcon /> Light Mode
-    </>
-  );
+  function renderButtonLabel(mode: Theme) {
+    // prettier-ignore
+    if (mode === 'dark') {
+      return <><MoonIcon className={iconClassName} data-testid="moon-icon" /> Dark Mode</>
+    } else if (mode === 'light') {
+      return <><SunIcon className={iconClassName} data-testid="sun-icon" /> Light Mode</>
+    } else {
+      return <><MoonSunIcon className={iconClassName} data-testid="moon-sun-icon" /> Match System</>
+    }
+  }
 
   return (
     <button
-      className="text-grey-950 inline-flex h-8 cursor-pointer flex-row items-center gap-2 font-semibold"
+      className="inline-flex h-8 cursor-pointer flex-row items-center gap-2 font-semibold text-primary-text"
       onClick={toggleTheme}
     >
-      {nextTheme === 'dark'
-        ? darkModeLabel
-        : nextTheme === 'light'
-          ? lightModeLabel
-          : matchSystemLabel}
+      {renderButtonLabel(nextTheme)}
     </button>
   );
 }
 
-const MoonIcon = () => (
+type SVGProps = React.SVGProps<SVGSVGElement>;
+
+const MoonIcon = (props: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -45,13 +40,13 @@ const MoonIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="aspect-square w-5"
+    {...props}
   >
     <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
   </svg>
 );
 
-const SunIcon = () => (
+const SunIcon = (props: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -60,7 +55,7 @@ const SunIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="aspect-square w-5"
+    {...props}
   >
     <circle cx="12" cy="12" r="4" />
     <path d="M12 2v2" />
@@ -74,7 +69,7 @@ const SunIcon = () => (
   </svg>
 );
 
-const SystemIcon = () => (
+const MoonSunIcon = (props: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -83,7 +78,7 @@ const SystemIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="aspect-square w-5"
+    {...props}
   >
     <path d="M12 2v2" />
     <path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715" />
